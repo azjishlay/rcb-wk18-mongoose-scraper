@@ -18,14 +18,18 @@ app.use(bodyParser.urlencoded({
 app.use(express.static('public'));
 
 // DATABASE CONFIGURATION
-mongoose.connect('mongodb://localhost/mongoosescraper');
+// mongoose.connect('mongodb://localhost/mongoosescraper');
+
+var uri = 'mongodb://username:password@ds021333.mlab.com:21333/heroku_86ns9zk0';
+mongoose.connect(uri);
+
 var db = mongoose.connection;
 
 db.on('error', function (err) {
     console.log('Mongoose Error: ', err);
 });
 db.once('open', function () {
-    console.log('Mongoose connection successful.');
+    console.log('Mongoose connection successful!');
 });
 
 // REQUIRE SCHEMAS
